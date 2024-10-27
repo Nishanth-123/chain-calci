@@ -1,4 +1,5 @@
 export const computeExpression = (expression: string, value: number): number => {
+    // eslint-disable-next-line
     return eval(replaceX(expression, value));
 }
 

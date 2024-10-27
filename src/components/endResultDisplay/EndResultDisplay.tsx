@@ -6,7 +6,7 @@ import IOField from "../common/IOField"
 
 
 const EndResultDisplay = ({displayName}: EndResultDisplayProps) => {
-    const {stageResult, onStageResultUpdated} = useContext(ChainCalciContext)
+    const { stageResult } = useContext(ChainCalciContext)
     const [result, setResult] = useState<number>(NaN)
 
     const displayNameStyles = useMemo(() => {
@@ -18,7 +18,7 @@ const EndResultDisplay = ({displayName}: EndResultDisplayProps) => {
 
     const onInputValueChange = useCallback((input: number) => {
 
-    }, [onStageResultUpdated])
+    }, [])
 
     const formatValue = useCallback((value: number): number => {
         if(Math.floor(value) === Math.ceil(value)) return Number(value.toFixed(0))
@@ -27,6 +27,8 @@ const EndResultDisplay = ({displayName}: EndResultDisplayProps) => {
 
     useEffect(() => {
         setResult(formatValue(stageResult?.result ?? NaN))
+        
+        // eslint-disable-next-line
     }, [stageResult])
 
     return (

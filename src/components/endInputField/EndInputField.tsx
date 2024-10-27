@@ -25,6 +25,8 @@ const EndInputField = ({displayName, nextFunctionId, calculationId}: EndInputFie
         if(calculationId && !Number.isNaN(input)){
             onStageResultUpdated({result: input, nextFunction: nextFunctionId ?? ''})
         }
+
+        // eslint-disable-next-line
     }, [calculationId, input])
 
     return (

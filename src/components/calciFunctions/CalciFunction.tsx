@@ -5,7 +5,7 @@ import EquationField from "../equationField/EquationField"
 import NextFunctionField from "../nextFunctionField/NextFunctionField"
 import IOPlug from "../common/IOPlug"
 import { ChainCalciContext } from "../../App"
-import { computeExpression, isValidExpression } from "../../utils/general"
+import { computeExpression } from "../../utils/general"
 
 
 const CalciFunction = ({equation, nextFunction, displayName, id, left: l, top: t}: CalciFunctionProps) => {
@@ -19,12 +19,12 @@ const CalciFunction = ({equation, nextFunction, displayName, id, left: l, top: t
     const handleExpressionChange = useCallback((newExpression: string) => {
         setExpression(newExpression)
         recalculate()
-    }, [])
+    }, [recalculate])
 
     const handleNextFunctionChange = useCallback((newNextFunctionId: string) => {
         setNextFunctionId(newNextFunctionId)
         recalculate()
-    }, [])
+    }, [recalculate])
 
     const onDragged = useCallback((deltaX: number, deltaY: number) => {
         setLeft(left + deltaX)
@@ -36,6 +36,8 @@ const CalciFunction = ({equation, nextFunction, displayName, id, left: l, top: t
             const output = computeExpression(expression, stageResult.result)
             onStageResultUpdated({result: output, nextFunction: nextFunctionId})
         }
+
+        // eslint-disable-next-line
     }, [stageResult])
 
     return <div className={`flex flex-col items-start w-[235px] h-[251px] border-[1px] rounded-[15px] border-solid px-[20px] pt-[15px] pb-[17px] absolute border-[#DFDFDF] bg-white`} style={{left : `${left}px`, top: `${top}px`}}>

@@ -18,6 +18,8 @@ const CalciFunctions = ({onFunctionsDataUpdated}: CalciFunctionsProps) => {
         const data = getFunctions()
         setFunctions(data)
         onFunctionsDataUpdated(data)
+        
+        // eslint-disable-next-line
     }, [])
 
     return <>

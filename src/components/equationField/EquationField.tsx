@@ -17,7 +17,7 @@ const EquationField = ({equation, onEquationChange}: EquationFieldProps) => {
         }
         setError(false)
         onEquationChange(newExpression)
-    }, [])
+    }, [onEquationChange])
 
     useEffect(() => {
         setEquationValue(equation)
