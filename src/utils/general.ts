@@ -1,5 +1,4 @@
 export const computeExpression = (expression: string, value: number): number => {
-    console.log("12345 ", expression, replaceX(expression, value), eval(replaceX(expression, value)))
     return eval(replaceX(expression, value));
 }
 
@@ -12,7 +11,6 @@ function replaceX(expr: string, value: number) {
     
     let result = '';
     for (let i = 0; i < expr.length; i++) {
-        debugger
         if (expr[i] === 'x') {
             // Check if x is the first character or if previous character is not an operator
             if (i !== 0 && !operators.includes(expr[i - 1])) {
@@ -28,4 +26,35 @@ function replaceX(expr: string, value: number) {
     }
     
     return result;
+}
+
+
+export const isValidExpression = (expr: string): boolean => {
+    // Remove all spaces
+    expr = expr.replace(/\s+/g, '');
+    
+    if (expr.length === 0) return false;
+    
+    // Regular expression for valid characters (only x, numbers, and specified operators)
+    const validCharsRegex = /^[x0-9+\-*/^.]+$/;
+    if (!validCharsRegex.test(expr)) {
+        return false;
+    }
+
+    // Check for consecutive operators
+    const hasConsecutiveOperators = /[+\-*/^]{2,}/.test(expr);
+    if (hasConsecutiveOperators) {
+        return false;
+    }
+
+    // Check for invalid start/end with operators except minus
+    if (/[+*/^]$/.test(expr) || /^[+*/^]/.test(expr)) {
+        return false;
+    }
+
+    // Check for invalid decimal numbers
+    const hasInvalidDecimals = /\d*\.\d*\./.test(expr);
+    if (hasInvalidDecimals) return false;
+
+    return true;
 }

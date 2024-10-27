@@ -30,7 +30,7 @@ const EndResultDisplay = ({displayName}: EndResultDisplayProps) => {
     }, [stageResult])
 
     return (
-        <div className='flex flex-col w-[115px] h-[78px] justify-between absolute top-[335px] left-[1239px]'>
+        <div className='flex flex-col w-[115px] h-[78px] justify-between absolute top-[335px] left-[1239px] bg-white'>
             <DisplayText text={displayName} styles={displayNameStyles}/>
             <IOField borderColor="#2DD179" dividerColor="#C5F2DA" value={result} onValueChange={onInputValueChange} fieldAlign="right"/>
         </div>

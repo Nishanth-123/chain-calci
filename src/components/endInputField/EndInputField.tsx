@@ -7,7 +7,7 @@ import IOField from "../common/IOField"
 
 const EndInputField = ({displayName, nextFunctionId, calculationId}: EndInputFieldProps) => {
     const {onStageResultUpdated} = useContext(ChainCalciContext)
-    const [input, setInput] = useState<number>(NaN)
+    const [input, setInput] = useState<number>(2)
 
     const displayNameStyles = useMemo(() => {
         return {
@@ -28,9 +28,9 @@ const EndInputField = ({displayName, nextFunctionId, calculationId}: EndInputFie
     }, [calculationId, input])
 
     return (
-        <div className='flex flex-col w-[115px] h-[78px] justify-between absolute left-[141px] top-[335px]'>
+        <div className='flex flex-col w-[115px] h-[78px] justify-between absolute left-[141px] top-[335px] bg-white'>
             <DisplayText text={displayName} styles={displayNameStyles}/>
-            <IOField borderColor="#FFC267" dividerColor="#FFEED5" value={input} onValueChange={onInputValueChange} fieldAlign="left"/>
+            <IOField borderColor="#FFC267" dividerColor="#FFEED5" value={input} onValueChange={onInputValueChange} fieldAlign="left" />
         </div>
     )
 }

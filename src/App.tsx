@@ -5,6 +5,8 @@ import EndInputField from './components/endInputField/EndInputField';
 import CalciFunctions from './components/calciFunctions/CalciFunctions';
 import { ICalciFunction } from './components/calciFunctions/typings';
 import EndResultDisplay from './components/endResultDisplay/EndResultDisplay';
+import Paths from './components/paths/Paths';
+import magicPattern from './assets/magicpattern-polka-dot-pattern.svg'
 
 
 
@@ -29,17 +31,18 @@ const App = () => {
     setStageResult(result)
   }, [])
 
-  const onFunctionsDataFetched = useCallback((functionsData: ICalciFunction[]) => {
-    setFunctionsData(functionsData)
-  }, [])
-
   const recalculate = useCallback(() => {
     let rnId: number = Math.random()
     while(rnId === calculationId) rnId = Math.random()
     setCalculationId(rnId)
   }, [calculationId])
 
-  const stageResultContextValue = useMemo(() => {
+  const onFunctionsDataFetched = useCallback((functionsData: ICalciFunction[]) => {
+    setFunctionsData(functionsData)
+    recalculate()
+  }, [recalculate])
+
+  const chainCalciContextValue = useMemo(() => {
     return {
       stageResult,
       functionsData,
@@ -52,12 +55,13 @@ const App = () => {
   const endResultDisplayName = useMemo(() => ('Final Output y'), [])
 
   return (
-    <div className='w-full h-screen'>
-      <ChainCalciContext.Provider value={stageResultContextValue}>
+    <div className='w-full h-screen bg-cover bg-center bg-no-repeat bg-fixed' style={{backgroundImage: `url(${magicPattern})`}}>
+      <ChainCalciContext.Provider value={chainCalciContextValue}>
         <EndInputField displayName={endInputDisplayName} nextFunctionId={startingFunctionId} calculationId={calculationId}/>
         <CalciFunctions onFunctionsDataUpdated={onFunctionsDataFetched}/>
         <EndResultDisplay displayName={endResultDisplayName}/>
-      </ChainCalciContext.Provider>      
+      </ChainCalciContext.Provider> 
+      <Paths />    
     </div>
   )
 }

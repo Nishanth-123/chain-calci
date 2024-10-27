@@ -10,7 +10,7 @@ const IOPlug = ({showText, text, textSide}: IOPlugProps) => {
                 )
             }
             <div className="w-[15px] h-full border-[2px] rounded-[50%] flex items-center justify-center" style={{borderColor: '#DBDBDB'}}>
-                <div className="w-[8px] h-[8px] rounded-[50%]" style={{backgroundColor: '#DBDBDB'}}/>
+                <div className="w-[8px] h-[8px] rounded-[50%] bg-[#66A3FF]"/>
             </div> 
             {
                 showText && textSide === 'right' && (

@@ -1,7 +1,9 @@
 import { ICalciFunction } from "../components/calciFunctions/typings";
 
-export const getFunctions = async (): Promise<ICalciFunction[]> => {
-    return Promise.resolve([
+export const getFunctions = (): ICalciFunction[] => {
+// export const getFunctions = async (): Promise<ICalciFunction[]> => {
+    // return Promise.resolve([
+    return ([
         {
             equation: "x^2",
             id: "1", // we can also give some random id

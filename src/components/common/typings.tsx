@@ -8,3 +8,12 @@ export type IOPlugProps = {
     textSide?: 'left' | 'right',
     id: string
 }
+
+export type IOFieldProps = {
+    borderColor: string,
+    dividerColor: string,
+    fieldAlign: 'left' | 'right',
+    onValueChange: undefined | ((value: number) => void),
+    value: number
+}
+

@@ -1,13 +1,6 @@
 import { memo, useCallback } from "react"
 import IOPlug from "./IOPlug"
-
-export type IOFieldProps = {
-    borderColor: string,
-    dividerColor: string,
-    fieldAlign: 'left' | 'right',
-    onValueChange: undefined | ((value: number) => void),
-    value: number
-}
+import { IOFieldProps } from "./typings"
 
 const IOField = ({borderColor, dividerColor, fieldAlign, value, onValueChange }: IOFieldProps) => {
 

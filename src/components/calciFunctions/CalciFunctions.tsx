@@ -7,10 +7,17 @@ const CalciFunctions = ({onFunctionsDataUpdated}: CalciFunctionsProps) => {
     const [functions, setFunctions] = useState<ICalciFunction[]>([]) 
 
     useEffect(() => {
-        getFunctions().then((functions) => {
-            setFunctions(functions)
-            onFunctionsDataUpdated(functions)
-        })
+
+        // below commented is a way if we had to fetch data from server asynchrously
+        /*
+            getFunctions().then((functions) => {
+                setFunctions(functions)
+                onFunctionsDataUpdated(functions)
+            })
+        */
+        const data = getFunctions()
+        setFunctions(data)
+        onFunctionsDataUpdated(data)
     }, [])
 
     return <>
