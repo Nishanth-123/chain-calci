@@ -61,7 +61,7 @@ const App = () => {
         <CalciFunctions onFunctionsDataUpdated={onFunctionsDataFetched}/>
         <EndResultDisplay displayName={endResultDisplayName}/>
       </ChainCalciContext.Provider> 
-      <Paths />    
+      <div className="w-full h-full absolute left-0 top-0 pointer-events-none"><Paths /></div> 
     </div>
   )
 }

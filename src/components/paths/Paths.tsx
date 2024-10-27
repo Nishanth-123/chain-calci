@@ -9,6 +9,7 @@ const Paths = () => {
     const {functionsData} = useContext(ChainCalciContext)
 
     const handleCanvasRef = useCallback((element: HTMLCanvasElement) => {
+        if(element === null) return
         const dpr = window.devicePixelRatio || 1;
     
         // Get the canvas's display size from CSS
@@ -92,7 +93,7 @@ const Paths = () => {
     }, [functionsData])
 
     return (
-        <canvas className="absolute w-full h-screen left-0 top-0 pointer-events-none" ref={handleCanvasRef}/>
+        <canvas className="w-full h-full" ref={handleCanvasRef}/>
     )
 }
 
